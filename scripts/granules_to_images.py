@@ -1,9 +1,7 @@
 import netCDF4
-import pandas as pd
 import numpy as np
 import math
 from PIL import Image
-import cv2
 
 def map_range(input_start,input_end,output_start,output_end,val):
     slope = (output_end - output_start) / (input_end - input_start)
