@@ -34,6 +34,7 @@ for year in range(1992,2018):
             for y, (e_row,n_row) in enumerate(zip(reversed(e_arr), reversed(n_arr))):
                 for x, (e_val,n_val) in enumerate(zip(e_row,n_row)):
                     if e_val.dtype == 'float64':
+                        bin_arr[y,x] = [np.nan, np.nan]
                         out_arr[y,x] = [0,100,0]
                         continue
                     mapped_e_val = math.floor(map_range(min_vel, max_vel,0,255,e_val))
@@ -47,6 +48,7 @@ for year in range(1992,2018):
                     if diff >= max_diff:
                         max_diff = diff
                     out_arr[y,x] = [mapped_e_val,0,mapped_n_val]
+                    bin_arr[y,x] = [e_val,n_val]
             print(max_diff)
 
             img = Image.fromarray(out_arr,"RGB")
